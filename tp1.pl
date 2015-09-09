@@ -63,7 +63,7 @@ voisines(X, Y):-
   route(Y, X).
 
 %coloriage
-
+% solution from https://www.cpp.edu/~jrfisher/www/prolog_tutorial/2_9.html
 adjacent(X, Y, Map) :-
   member([X, Y], Map);
   member([Y, X], Map).
