@@ -1,3 +1,5 @@
+[list].
+
 clear :-
   write('\33\[2J'),
   nl.
@@ -74,8 +76,8 @@ find_regions([[X,Y]|S], R,A) :-
         (member(Y,R) -> find_regions(S,R,A) ; find_regions(S,[Y|R],A)) ; 
            (member(Y,R) -> find_regions(S,[X|R],A) ; find_regions(S,[X,Y|R],A) ) ).
 
-color([[1,2],[1,3],[1,4],[1,5],[2,3],[2,4],[3,4],[4,5]], 
-      [red,green,blue,yellow],Coloring).
+%color([[1,2],[1,3],[1,4],[1,5],[2,3],[2,4],[3,4],[4,5]], 
+      %[red,green,blue,yellow],Coloring).
 %Coloring = [[5,red],[4,green],[3,red],[1,blue],[2,yellow]] ; ...   [> 48 solutions <] 
 
 color_all([H|T], Colors, [[H, C]|A]) :-
@@ -87,10 +89,6 @@ color(Map, Colors, Result) :-
   find_regions(Map, [], Regions),
   color_all(Regions, Colors, Result),
   \+ conflict(Map, Result).
-
-takeout(X, [X|R], R).
-takeout(X, [F|R], [F|S]) :-
-  takeout(X, R, S).
 
 conflict(_, []).
 conflict(Map, Result) :-
